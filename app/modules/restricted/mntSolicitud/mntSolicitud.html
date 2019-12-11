@@ -1,0 +1,220 @@
+﻿<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card card-danger shadow-sm">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-th pr-2"></i>Solicitudes Pendientes</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" ng-repeat="soli in listaSolicitudes">
+                        <div class="card card-danger card-outline">
+                            <div class="card-header">
+                                <h3 class="card-title">Estado: {{soli.DES_EST_SOLI}}</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body" style="min-height:540px!important">
+                                <strong><i class="fas fa-briefcase mr-1"></i>Nombre del especialista</strong>
+                                <p class="text-muted">
+                                    {{soli.PRI_NOM_USU_ESPECIALISTA}} {{soli.APE_PAT_USU_ESPECIALISTA}} {{soli.APE_MAT_USU_ESPECIALISTA}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-briefcase mr-1"></i>Servicio solicitado</strong>
+                                <p class="text-muted">
+                                    {{soli.DES_TIP_SERV}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-book mr-1"></i>¿En qué estado se encuentran el lugar?</strong>
+                                <p class="text-muted">
+                                    {{soli.Column1}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-book mr-1"></i>¿Tienes ya alguna cotización?</strong>
+                                <p class="text-muted">
+                                    {{soli.Column2}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-book mr-1"></i>¿Cuándo quieres realizar el trabajo?</strong>
+                                <p class="text-muted">
+                                    {{soli.Column3}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-phone mr-1"></i> Numero contacto</strong>
+                                <p class="text-muted">
+                                    {{soli.NUME_CONTAC}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-at mr-1"></i> Correo contacto</strong>
+                                <p class="text-muted">
+                                    {{soli.CORR_CONTAC}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-calendar-minus mr-1"></i> Fecha</strong>
+                                <p class="text-muted">
+                                    {{soli.FEC_SOLI}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-danger shadow-sm">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-th pr-2"></i>Solicitudes Finalizadas</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" ng-repeat="soliX in listaSolicitudesFinalizadasM">
+                        <div class="card card-danger card-outline">
+                            <div class="card-header">
+                                <h3 class="card-title">Estado: {{soliX.DES_EST_SOLI}}</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body" style="min-height:540px!important">
+                                <strong><i class="fas fa-briefcase mr-1"></i>Nombre del especialista</strong>
+                                <p class="text-muted">
+                                    {{soliX.PRI_NOM_USU_ESPECIALISTA}} {{soliX.APE_PAT_USU_ESPECIALISTA}} {{soliX.APE_MAT_USU_ESPECIALISTA}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-briefcase mr-1"></i>Servicio solicitado</strong>
+                                <p class="text-muted">
+                                    {{soliX.DES_TIP_SERV}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-book mr-1"></i>¿En qué estado se encuentran el lugar?</strong>
+                                <p class="text-muted">
+                                    {{soliX.Column1}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-book mr-1"></i>¿Tienes ya alguna cotización?</strong>
+                                <p class="text-muted">
+                                    {{soliX.Column2}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-book mr-1"></i>¿Cuándo quieres realizar el trabajo?</strong>
+                                <p class="text-muted">
+                                    {{soliX.Column3}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-phone mr-1"></i> Numero contacto</strong>
+                                <p class="text-muted">
+                                    {{soliX.NUME_CONTAC}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-at mr-1"></i> Correo contacto</strong>
+                                <p class="text-muted">
+                                    {{soliX.CORR_CONTAC}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-calendar-minus mr-1"></i> Fecha</strong>
+                                <p class="text-muted">
+                                    {{soliX.FEC_SOLI}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="card card-danger collapsed-card shadow-sm">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-th pr-2"></i>Solicitudes Canceladas</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+
+                </div>
+            </div>
+        </div>-->
+    </div>
+
+</div>
+<div class="modal fade z-index-modal" id="modal-menu">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Menu</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+                                <div class="form-group">
+                                    <label>Nombre:</label>
+                                    <input type="text" name="" class="form-control" ng-model="mntMenu.txtNombre">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+                                <div class="form-group">
+                                    <label>Ruta:</label>
+                                    <input type="text" name="" class="form-control" ng-model="mntMenu.txtRuta">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input" for="">Grupo:</label>
+                                    <select class="form-control input-sm fullSize" ng-model="mntMenu.cboGrupo">
+                                        <option value="">:: Seleccione ::</option>
+                                        <option ng-repeat="item in listarGrupo" value="{{item.ID_GRU}}">{{item.NOM_GRU}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input" for="">Estado:</label>
+                                    <select ng-model="mntMenu.cboEstado" class="form-control input-sm fullSize">
+                                        <option value="">:: Seleccione ::</option>
+                                        <option ng-repeat="item in estado" value="{{item.id}}">{{item.nombre}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="confirmar()">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade z-index-modal" id="modal-eliminar">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Large Modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿está seguro que desea eliminar el registro seleccionado?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="confirmar()">Aceptar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

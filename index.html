@@ -1,36 +1,111 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html ng-app="app">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pasteleria</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Catelyn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <base href="/">
-
-    <link rel="stylesheet" href="src/plugins/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <script src="https://apis.google.com/js/api.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="src/plugins/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="src/plugins/fontawesome-free/css/all.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="src/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="src/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Bootstrap Datatables -->
+    <link rel="stylesheet" href="src/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="src/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <!-- Overlay Scrollbars -->
+    <link rel="stylesheet" href="src/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="src/plugins/toastr/toastr.css">
+    <!-- Care Catelyn -->
+    <link rel="stylesheet" href="src/css/core.css">
+    <link rel="stylesheet" href="src/css/estyles.css">
+    <link href="src/css/loading-bar.css" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
     <!-- jQuery -->
     <script src="src/plugins/jquery/jquery.min.js"></script>
-
-    <!-- loginTheme-->
-    <link rel="stylesheet" href="src/plugins/login/css/util.css">
-    <link rel="stylesheet" href="src/plugins/login/css/main.css">
-    <script src="src/plugins/login/js/main.js"></script>
-    
+    <script src="src/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="src/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Overlay Scrollbars -->
+    <script src="src/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- Toastr -->
+    <script src="src/plugins/toastr/toastr.min.js"></script>
+    <!-- Core Catelyn -->
+    <script src="src/js/util.js"></script>
+    <script src="src/js/adminlte.min.js"></script>
+    <script src="src/js/demo.js"></script>
     <script src="src/js/general.js"></script>
-    <!-- AngularJS -->
-    <script src="src/plugins/angular-1.7.9/angular.min.js"></script>
-    <script src="src/plugins/angular-1.7.9/angular-messages.min.js"></script>
-    <script src="src/plugins/angular-1.7.9/angular-ui-router.min.js"></script>
-    <script src="src/plugins/angular-1.7.9/angular-animate.min.js"></script>
 
+    <!-- AngularJS -->
+    <script src="src/plugins/angular/angular.min.js"></script>
+    <script src="src/plugins/angular/angular-messages.min.js"></script>
+    <script src="src/plugins/angular/angular-ui-router.min.js"></script>
+    <script src="src/plugins/angular/ngStorage.min.js"></script>
+    <script src="src/plugins/angular/angular-datatables.min.js"></script>
+    <script src="src/plugins/angular/angular-animate.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="src/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="src/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <script src="src/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="src/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
     <script src="app/app.js"></script>
-</head ng-controller="principalController">
-<body>
+    <script src="src/js/directiva.js"></script>
+    <script src="src/js/loading-bar.js"></script>
+    <script src="app/services/serviceGeneral.js"></script>
 
-    <ui-view style="width:100%!important"></ui-view> 
-    
+    <script src="app/services/serviceAuthentication.js"></script>
+    <script src="app/modules/principal/principalController.js"></script>
+    <!-- Public -->
+    <script src="app/modules/public/especialistas/especialistasController.js"></script>
+    <script src="app/modules/public/landingPage/landingPageController.js"></script>
+    <script src="app/modules/public/visualizarPerfil/visualizarPerfilController.js"></script>
+    <!-- Restricted -->
+    <script src="app/modules/restricted/home/homeController.js"></script>
+    <script src="app/modules/restricted/mntMenu/mntMenuController.js"></script>
+    <script src="app/modules/restricted/mntPerfil/mntPerfilController.js"></script>
+    <script src="app/modules/restricted/mntRol/mntRolController.js"></script>
+    <script src="app/modules/restricted/mntUsuario/mntUsuarioController.js"></script>
+    <script src="app/modules/restricted/mntSolicitud/mntSolicitudController.js"></script>
+    <script src="app/modules/restricted/mntAtencionSolicitud/mntAtencionSolicitudController.js"></script>
+    <script src="app/modules/restricted/mtnPerfilUsuario/01serviciosPerfilController.js"></script>
+    <script src="app/modules/restricted/mtnPerfilUsuario/02datosPerfilController.js"></script>
+    <script src="app/modules/restricted/mtnPerfilUsuario/03detalleDatosPerfilController.js"></script>
+    <script src="app/modules/restricted/mtnPerfilUsuario/04caracteristicasPerfilController.js"></script>
+    <script src="app/modules/restricted/mtnPerfilUsuario/05portafolioPerfilController.js"></script>
+    <script src="app/modules/restricted/mtnPerfilUsuario/06estudiosPerfilController.js"></script>
+    <script src="app/modules/restricted/mtnPerfilUsuario/miPerfilController.js"></script>
+    <script src="app/modules/public/inicio/inicioController.js"></script>
+
+    <script type="text/javascript">
+        const firebaseConfig = {
+            apiKey: "AIzaSyD0K-N6V_SIcBALXSm4kvWeYsEMKoPyDnE",
+            authDomain: "catelyn-65955.firebaseapp.com",
+            databaseURL: "https://catelyn-65955.firebaseio.com",
+            projectId: "catelyn-65955",
+            storageBucket: "catelyn-65955.appspot.com",
+            messagingSenderId: "920374685491",
+            appId: "1:920374685491:web:654b906a6ac506b79f9846"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse layout-fixed" ng-controller="principalController">
+    <ui-view style="width:100%!important"></ui-view>  
 </body>
 </html>

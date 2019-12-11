@@ -1,0 +1,137 @@
+﻿<style>
+    ul {
+        list-style: none
+    }
+    /*.nav a:focus, .nav a:hover, .nav .ckeck:focus, .nav .ckeck:hover {
+        background: #494E53;
+    }*/
+    .nav .ckeck {
+        cursor: pointer;
+    }
+    .nav__list {
+        width: 100%;
+    }
+    .group-list a:focus, .group-list a:hover, .group-list .ckeck:focus, .group-list .ckeck:hover {
+        background: #494E53;
+    }
+    .group-list {
+        height: 100%;
+        padding-left: 0px;
+        max-height: 0;
+        overflow: hidden;
+        -webkit-transition: max-height .15s ease-in-out;
+        transition: max-height .15s ease-in-out;
+    }
+    .nav__list input[type=checkbox]:checked + .ckeck + ul {
+        max-height: 1000px;
+    }
+    .ckeck > span {
+        float: right;
+        -webkit-transition: -webkit-transform .35s ease;
+        transition: transform .35s ease;
+    }
+    .nav__list input[type=checkbox]:checked + label > p > i {
+        -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+</style>
+<div class="wrapper">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href=""><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item">
+                <a ui-sref="inicio.landingPage" class="nav-link">Inicio</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a ui-sref="home" class="nav-link">Home</a>
+            </li>
+        </ul>
+        <!-- SEARCH FORM -->
+        <!--<form class="form-inline ml-3">
+            <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-navbar" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>-->
+        <ul class="navbar-nav ml-auto">
+            <!-- Notificaciones -->
+            <!--<li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="">
+                    Notificaciones
+                    <span class="badge badge-danger navbar-badge" style="top: 5px; right: 0;">2</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">15 Notifications</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">
+                        <i class="fas fa-envelope mr-2"></i> 4 new messages
+                        <span class="float-right text-muted text-sm">3 mins</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">
+                        <i class="fas fa-users mr-2"></i> 8 friend requests
+                        <span class="float-right text-muted text-sm">12 hours</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item">
+                        <i class="fas fa-file mr-2"></i> 3 new reports
+                        <span class="float-right text-muted text-sm">2 days</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="" class="dropdown-item dropdown-footer">See All Notifications</a>
+                </div>
+            </li>-->
+            <li class="nav-item dropdown user-menu">
+                <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{usuario.IMA_USU}}" style="margin-top: -1px;" class="user-image img-circle mr-1" alt="user image">
+                    <span class="d-none d-md-inline">{{usuario.PRI_NOM_USU}} {{usuario.APE_PAT_USU}}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                    <a ui-sref="" class="dropdown-item">Acerca de</a>
+                    <a href="" ng-click="logaut()" class="dropdown-item">Salir</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <aside class="main-sidebar sidebar-dark-primary sidebar-no-expand">
+        <a href="#" class="brand-link">
+            <img src="{{usuario.IMA_USU}}" style="width:33px; height:33px; min-height:33px;" alt="user image" class="brand-image img-circle">
+            <span class="brand-text font-weight-light">{{usuario.PRI_NOM_USU}} {{usuario.APE_PAT_USU}}</span>
+        </a>
+        <div class="sidebar">
+            <nav class="mt-2 nav">
+                <ul class="nav__list nav nav-pills nav-sidebar flex-column">
+                    <li class="nav-item has-treeview" ng-repeat="x in ListarGrupos">
+                        <input id="{{x.ID_GRU}}" type="checkbox" hidden />
+                        <label class="nav-link ckeck" for="{{x.ID_GRU}}">
+                            <i class="nav-icon {{x.DES_ICO}}"></i>
+                            <p style="color:#C2C7D0!important; font-weight:500; line-height:24px; letter-spacing: 0.1px;">{{x.NOM_GRU}}<i class="fas fa-angle-left right"></i></p>
+                        </label>
+                        <ul class="group-list">
+                            <li class="nav-item" ng-repeat="x2 in ListarMenus" ng-if="x.ID_GRU == x2.ID_GRU">
+                                <a class="nav-link" ui-sref=".{{x2.RUT_MEN}}" href="/home/miPerfil"><p style="margin-left:30px; font-weight:500;">{{x2.NOM_MEN}}</p></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <div class="content-wrapper padding-15">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row"> 
+                    <div ui-view style="width:100%!important"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <aside class="control-sidebar control-sidebar-dark"></aside>
+</div>

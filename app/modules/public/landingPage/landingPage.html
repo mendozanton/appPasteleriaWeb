@@ -1,0 +1,195 @@
+﻿<div class="banner col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="texto" style="margin-top: 65px;">
+                    <h1 style="color:white;">
+                        <strong class="text-landing-page">
+                            Encuentra profesionales de confianza
+                        </strong>
+                    </h1>
+                    <h5 style="color:white;padding-top: 15px;">
+                        Pintores, carpinteros, remodelación de viviendas, mudanzas y más…
+                    </h5>
+                </div>
+                <div class="buscar" style="margin-top: 64px;">
+                    <form action="#">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input class="form-control py-2 border-right-0 border" style="height: 45px;" type="text" placeholder="Escribe lo que necesites Ej: Pintores, Carpinteros">
+                                <span class="input-group-append">
+                                    <button class="btn border border-left-0" style="background-color: white;" type="button">
+                                        <i class="fa fa-search" style="color: #DC3545;"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <img style="width:100%;" src="../../../../src/img/landingPage.png" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <!--<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-5">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-5" style="text-align: center;">
+                <h1 class="text-landing-page">Pide cotizaciones para tu próximo proyecto</h1>
+                <h5>Encuentra el especialista que mas se adecue a tus necesidades contacta y cotiza es fácil que esperas !!</h5>
+            </div>
+            <div class="col-12 col-sm-12 col-md-9 col-lg-5 col-xl-5">
+                <h1>FALTA</h1>
+            </div>
+            <div class="col-12 col-sm-12 col-md-9 col-lg-7 col-xl-7">
+                <div class="card shadow" style="border-radius: 7px;">
+                    <div class="card-body">
+                        <div id="wrapper" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 p-0">
+                            <div class="row">
+                                <div class="col-12">
+                                    <progress value="{{Filtros.Progress}}" max="100" id="uploader" style="width:100%!important;">0%</progress>
+                                </div>
+                                <div class="col-12">
+                                    <div id="steps" style="min-height:350px;">
+                                        <fieldset class="step">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                                <div class="form-group">
+                                                    <h5>¿Qué tipo de trabajo necesitas?</h5>
+                                                    <input type="text" class="form-control input-sm ng-valid" name="NombIFSW" list="ListIFSW" ng-model="Filtros.Colaborador" ng-change="VerColab()" autocomplete="off" placeholder="Ej: Construccion, Reformas, Mantenimiento">
+                                                    <datalist id="ListIFSW">
+                                                        <option ng-repeat="item in servicio" value="{{item.DES_SERV}}"></option>
+                                                    </datalist>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                                <h6>Tipo de servicio:</h6>
+                                                <nav class="navbar bg-light">
+                                                    <ul class="navbar-nav ml-2">
+                                                        <li ng-repeat="x in tipoServicio" ng-if="solicitud.codigoServicio == x.ID_SERV" class="my-2">
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input " type="radio" id="check{{x.ID_SERV}}{{x.ID_TIP_SERV}}" name="servicio" ng-model="solicitud.codigoTipoSolicitud" value="{{x.ID_TIP_SERV}}">
+                                                                <label for="check{{x.ID_SERV}}{{x.ID_TIP_SERV}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x.DES_TIP_SERV}}</label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="step">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                                <h5>¿En qué estado se encuentran el lugar?</h5>
+                                                <nav class="navbar bg-light">
+                                                    <ul class="navbar-nav ml-2">
+                                                        <li ng-repeat="x2 in pregunta" ng-if="x2.ID_GRU_PREG == 1" class="my-2">
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input " type="radio" id="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" name="servicio" ng-model="respuestaPregunta.codigoPregunta01" value="{{x2.ID_PREG}}">
+                                                                <label for="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x2.DES_PREG}}</label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="step">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                                <h5>¿Tienes ya alguna cotización?</h5>
+                                                <nav class="navbar bg-light">
+                                                    <ul class="navbar-nav ml-2">
+                                                        <li ng-repeat="x2 in pregunta" ng-if="x2.ID_GRU_PREG == 2" class="my-2">
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input " type="radio" id="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" name="servicio" ng-model="respuestaPregunta.codigoPregunta02" value="{{x2.ID_PREG}}">
+                                                                <label for="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x2.DES_PREG}}</label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="step">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                                <h5>¿Cuándo quieres realizar el trabajo?</h5>
+                                                <nav class="navbar bg-light">
+                                                    <ul class="navbar-nav ml-2">
+                                                        <li ng-repeat="x2 in pregunta" ng-if="x2.ID_GRU_PREG == 3" class="my-2">
+                                                            <div class="custom-control custom-radio">
+                                                                <input class="custom-control-input " type="radio" id="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" name="servicio" ng-model="respuestaPregunta.codigoPregunta03" value="{{x2.ID_PREG}}">
+                                                                <label for="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x2.DES_PREG}}</label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="step bg-light">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                                <div class="form-group">
+                                                    <h5>Cuéntanos más detalles sobre el trabajo</h5>
+                                                    <textarea ng-model="solicitud.presupuestoSolicitud"
+                                                              style="border:1px solid #DEDEDE" maxlength="500" rows="5"
+                                                              placeholder="Si deseas puedes añadir mas detalles del trabajo que necesitas para que los especialistas sean mas precisos a la hora de pasarte el presupuesto. No incluyas ningun dato de contacto"></textarea>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="step">
+                                            <p class="submit">
+                                                <button id="registerButton" type="submit">Register</button>
+                                            </p>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div id="navigation" style="margin: 0 auto">
+                                            <ul class="m-0 p-0">
+                                                <li class="selected"><a class="btn-solicitud" ng-show="pregunta01" ng-click="paso01()">paso01</a></li>
+                                                <li><a class="btn-solicitud" ng-show="pregunta02" ng-click="paso02()">paso02</a></li>
+                                                <li><a class="btn-solicitud" ng-show="pregunta03" ng-click="paso03()">paso03</a></li>
+                                                <li><a class="btn-solicitud" ng-show="pregunta04" ng-click="paso04()">paso04</a></li>
+                                                <li><a class="btn-solicitud" ng-show="pregunta05" ng-click="paso05()">paso05</a></li>
+                                                <li><a class="btn-solicitud" ng-show="pregunta06" ng-click="paso06()">paso06</a></li>
+                                                <li><a class="btn-solicitud" ng-show="pregunta07" ng-click="paso07()">paso07</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-5">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-5 text-center">
+                <h1 class="text-landing-page">Que servicio necesitas hoy</h1>
+                <h5>Encuentra el especialista que mas se adecue a tus necesidades contacta y cotiza es fácil que esperas !!</h5>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="row">
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-4 col-xl-3" ng-repeat="s in servicio" ng-click="mandarParametros(s)" style="cursor:pointer;">
+                        <div class="card shadow" style="border-radius: 7px;">
+                            <div class="card-body">
+                                <!-- s.ID_SERV -->
+                                <div class="iconoHouse text-center">
+                                    <i class="{{s.DES_ICO}}" style="font-size: 70px;color: rgb(175, 55, 82);"></i>
+                                    <p style="margin-top: 10px;margin-bottom: 0;">{{s.DES_SERV}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
+                <button class="btn btn-outline-danger"
+                        style="width: 20%; height: 50px;margin-top: 40px;border: 2px solid;border-radius: 7px;">
+                    <strong>Ver mas</strong>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>  

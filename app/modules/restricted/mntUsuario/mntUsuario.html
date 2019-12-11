@@ -1,0 +1,328 @@
+﻿    <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-th pr-2 "></i>{{titulo}}</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-9 col-lg-9 col-xl-10">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input" for="">Estado:</label>
+                                    <select ng-model="mntUsuario.txtEstado" class="form-control input-sm fullSize">
+                                        <option value="">:: Seleccione ::</option>
+                                        <option ng-repeat="item in estado" value="{{item.id}}">{{item.nombre}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-2">
+                        <div class="row text-right">
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                                <button type="button" class="btn btn-block btn-default btn-sm" ng-click="ConsultarUsuario()">Consultar</button>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                                <button type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal" ng-click="mostrar()">Registrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div>
+            <table datatable="ng" dt-options="dtOptions" class="table table-hover table-bordered nowrap" style="width:100%!important">
+                <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Nombre de usuario</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in listaUsuario">
+                        <td class="text-center">{{item.ID_USU}}</td>
+                        <td>{{item.PRI_NOM_USU}}</td>
+                        <td>{{item.APE_PAT_USU}} {{item.APE_MAT_USU}}</td>
+                        <td>{{item.EMA_USU}}</td>
+                        <td>{{item.LOG_USU}}</td>
+                        <td>{{item.NOM_ROL}}</td>
+                        <td>{{item.DES_EST_USU}}</td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-warning btn-xs icon-fa" data-toggle="modal" title="Editar" ng-click="Actualizar(item)">
+                                <span class="fas fa-edit icon-fa-s"></span>
+                            </button>
+                            <button type="button" class="btn btn-info btn-xs icon-fa" data-toggle="modal"  title="Detalle de usuario" ng-click="MotrarDetalle(item)">
+                                <span class="fas fa-eye icon-fa-s"></span>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-xs icon-fa" ng-click="mandarParametros(item)" title="Ver perfil">
+                                <span class="fas fa-user-alt icon-fa-s"></span>
+                            </button>
+                        </td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-success btn-xs icon-fa" data-toggle="modal-asignar" title="Asignar menus" ng-click="mostrarAsoc(item)">
+                                <span class="fas fa-plus icon-fa-s"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade z-index-modal" id="modal-usuarioDetalle">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detalle Usuario</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input" for="">Descripcion:</label>
+                                    <textarea ng-model="mntDetalleUsuario.txtDescripcion" disabled style="border:1px solid #DEDEDE" maxlength="500" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-6 col-xl-4">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input" for="">Fecha de Nacimiento:</label>
+                                    <input ng-model="mntDetalleUsuario.txtFecha" disabled type="text" name="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-7 col-xl-4">
+                                <div class="form-group">
+                                    <label>Telefono:</label>
+                                    <input ng-model="mntDetalleUsuario.txtTelefono" disabled type="text" name="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-7 col-xl-4">
+                                <div class="form-group">
+                                    <label>Celular:</label>
+                                    <input ng-model="mntDetalleUsuario.txtCelular" disabled type="text" name="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-7 col-xl-4">
+                                <div class="form-group">
+                                    <label>Documento de Identidad:</label>
+                                    <input ng-model="mntDetalleUsuario.txtDni" disabled type="text" name="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input" for="">Sexo:</label>
+                                    <select ng-model="mntDetalleUsuario.txtSexo" class="form-control input-sm fullSize" disabled>
+                                        <option value="">:: Seleccione ::</option>
+                                        <option ng-repeat="item in listarSexo" value="{{item.ID_SEX}}">{{item.NOM_SEX}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-7 col-xl-4">
+                                <div class="form-group">
+                                    <label>Seudonimo:</label>
+                                    <input ng-model="mntDetalleUsuario.txtSeudonimo" disabled type="text" name="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-10 col-xl-10">
+                                <div class="form-group">
+                                    <label>Direccion Actual:</label>
+                                    <input ng-model="mntDetalleUsuario.txtDireccion" disabled type="text" name="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-10 col-xl-10">
+                                <div class="form-group">
+                                    <label>Punto de Referencia:</label>
+                                    <input ng-model="mntDetalleUsuario.txtReferencia" disabled type="text" name="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <label>Pais:</label>
+                                    <input ng-model="mntDetalleUsuario.txtPais" disabled type="text" name="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <label>Departamento:</label>
+                                    <input ng-model="mntDetalleUsuario.txtDepartamento" disabled type="text" name="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <label>Provincia:</label>
+                                    <input ng-model="mntDetalleUsuario.txtProvincia" disabled type="text" name="" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <label>Distrito:</label>
+                                    <input ng-model="mntDetalleUsuario.txtDistrito" disabled type="text" name="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade z-index-modal" id="modal-usuarioModificar">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Usuario</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <label>Primer Nombre:</label>
+                                    <input type="text" name="" ng-model="mntUsuario.txtNombres" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <label>Apellido Paterno:</label>
+                                    <input type="text" name="" ng-model="mntUsuario.txtApellidoPaterno" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <label>Apellido Materno:</label>
+                                    <input type="text" name="" ng-model="mntUsuario.txtApellidoMaterno" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <label>Correo Electronico:</label>
+                                    <input type="text" name="" ng-model="mntUsuario.txtCorreo" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <label>Nombre de Usuario:</label>
+                                    <input type="text" name="" ng-model="mntUsuario.txtNombreUsuario" class="form-control ng-pristine ng-untouched ng-valid ng-empty" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input" for="">Estado:</label>
+                                    <select ng-model="mntUsuario.estado" class="form-control input-sm fullSize">
+                                        <option value="">:: Seleccione ::</option>
+                                        <option ng-repeat="item in listarProvincia" value="{{item.ID_PRO}}">{{item.NOM_PRO}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-10 col-xl-8">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-8 col-lg-12 col-xl-12">
+                                        <div class="form-group mb-1">
+                                            <label class="cls-titulo-input" for="">Foto:</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input style="height: 34px;" type="file" class="custom-file-input" name="fileUpload" id="fileUpload" accept="image/x-png,image/jpg,image/jpeg">
+                                                    <label class="custom-file-label" for="exampleInputFile"><font style="vertical-align: middle;"><font style="vertical-align: inherit;">Seleccione foto</font></font></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <progress value="0" max="100" id="uploader" style="width:100%!important">0%</progress>
+
+                                        <!--<img src="../../../../src/img/avatar.png" data-edit="0" id="image" class="img-thumbnail" style="margin-bottom: 10px!important;width:110px!important; min-width:110px;max-width:110px; height:110px!important;">-->
+                                        <img src="{{mntUsuario.txtFoto}}" data-edit="0" id="image" class="img-thumbnail" style="margin-bottom: 10px!important;width:110px!important; min-width:110px;max-width:110px; height:110px!important;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade z-index-modal" id="modal-asignar">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Asignar Rol</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <label class="mb-3 mr-5">Nombres: <label style="font-weight:normal">{{mntUsuario.txtNombres}} {{mntUsuario.txtApellidoPaterno}}</label></label>
+                        <label class="mb-3">Rol Actual: <label style="font-weight:normal">{{mntUsuario.txtRol}}</label></label>
+                        <nav class="navbar bg-light" style="max-height:300px; overflow-y:scroll">
+                            <ul class="navbar-nav mx-4 my-3" id="deshabilitar">
+                                <li ng-repeat="x in listaRol" class="nav-item mb-4">
+                                    <label><i class="fa fa-link mr-1"></i><span>{{x.NOM_ROL}}</span></label>
+                                    <ul class="navbar-nav ml-5">
+                                        <li ng-repeat="x2 in listaPerfil" ng-if="x.ID_ROL==x2.ID_ROL">
+                                            <div class="custom-control custom-radio">
+                                                <input class="custom-control-input " type="radio" id="check{{x.ID_ROL}}{{x2.ID_PER}}" name="usuario" ng-model="codigo.cadena" value="r{{x.ID_ROL}}p{{x2.ID_PER}}" ng-checked="check{{x2.ID_ROL}}{{x2.ID_PER}}">
+                                                <label for="check{{x.ID_ROL}}{{x2.ID_PER}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x2.NOM_PER}}</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="registrarAsociacion()">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>

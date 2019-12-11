@@ -1,0 +1,62 @@
+﻿<div class="row">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" ui-sref=".2" style="cursor:pointer!important">
+        <div class="info-box">
+            <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-cog"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-number my-3">Datos personales</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" ui-sref=".3" style="cursor:pointer!important">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-number my-3">Datos adicionales</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" ui-sref=".1" style="cursor:pointer!important" ng-show="perfilOcultar">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-number my-1">Servicios</span>
+                <small class="info-box-text">Seleccionados {{servicio}}</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" ui-sref=".4" style="cursor:pointer!important" ng-show="perfilOcultar">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-number my-1">Caracteristicas</span>
+                <small class="info-box-text">Seleccionados {{caracteristica}}</small>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" ui-sref=".5">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-number my-1">Portafolio</span>
+                <small class="info-box-text">Agregados 3</small>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" ui-sref=".6" style="cursor:pointer!important">
+        <div class="info-box mb-3">
+            <span class="info-box-icon bg-purple elevation-1"><i class="fas fa-users"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-number my-1">Estudios</span>
+                <small class="info-box-text">Agregados {{estudio}}</small>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div ui-view style="width:100%!important"></div>
+</div>

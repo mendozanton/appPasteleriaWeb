@@ -1,0 +1,112 @@
+﻿<div class="modal fade z-index-modal" id="modal-solicitarServicio">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Solicita presupuesto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div id="" style="min-height:350px;">
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <div class="form-group">
+                                        <h5>¿Qué tipo de trabajo necesitas?</h5>
+                                        <input type="text" class="form-control input-sm ng-valid" name="NombIFSW" list="ListIFSW" ng-model="Fil.Colaborador" ng-change="VerPer()" autocomplete="off" placeholder="Ej: Construccion, Reformas, Mantenimiento">
+                                        <datalist id="ListIFSW">
+                                            <option ng-repeat="item in listaServicio" value="{{item.DES_SERV}}"></option>
+                                        </datalist>
+
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <h6>Tipo de servicio:</h6>
+                                    <nav class="navbar bg-light" style="max-height:300px; overflow-y:scroll">
+                                        <ul class="navbar-nav ml-2">
+                                            <li ng-repeat="x in listaTipoServicioPerfil" ng-if="solicitud.codigoServicio == x.COD_SERV" class="my-2">
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input " type="radio" id="check{{x.COD_SERV}}{{x.ID_TIP_SERV}}" name="servicio" ng-model="solicitudPresu.idTipoServicio" value="{{x.ID_TIP_SERV}}">
+                                                    <label for="check{{x.COD_SERV}}{{x.ID_TIP_SERV}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x.DES_TIP_SERV}}</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                {{Fil.Colaborador}}
+                            </fieldset>
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <h5>¿En qué estado se encuentran el lugar?</h5>
+                                    <nav class="navbar bg-light">
+                                        <ul class="navbar-nav ml-2">
+                                            <li ng-repeat="x2 in pregunta" ng-if="x2.ID_GRU_PREG == 1" class="my-2">
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input " type="radio" id="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" name="servicio1" ng-model="solicitudPresu.codigoPregunta01" value="{{x2.ID_PREG}}">
+                                                    <label for="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x2.DES_PREG}}</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </fieldset>
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <h5>¿Tienes ya alguna cotización?</h5>
+                                    <nav class="navbar bg-light">
+                                        <ul class="navbar-nav ml-2">
+                                            <li ng-repeat="x2 in pregunta" ng-if="x2.ID_GRU_PREG == 2" class="my-2">
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input " type="radio" id="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" name="servicio2" ng-model="solicitudPresu.codigoPregunta02" value="{{x2.ID_PREG}}">
+                                                    <label for="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x2.DES_PREG}}</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </fieldset>
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <h5>¿Cuándo quieres realizar el trabajo?</h5>
+                                    <nav class="navbar bg-light">
+                                        <ul class="navbar-nav ml-2">
+                                            <li ng-repeat="x2 in pregunta" ng-if="x2.ID_GRU_PREG == 3" class="my-2">
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input " type="radio" id="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" name="servicio3" ng-model="solicitudPresu.codigoPregunta03" value="{{x2.ID_PREG}}">
+                                                    <label for="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x2.DES_PREG}}</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </fieldset>
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <h5>Numero de contacto</h5>
+                                    <nav class="navbar bg-light px-3 py-3">
+                                        <input type="text" name="" class="form-control" ng-model="solicitudPresu.numerContac" solo-digitos maxlength="9">
+                                    </nav>
+                                </div>
+                            </fieldset>
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <h5>Correo de contacto</h5>
+                                    <nav class="navbar bg-light px-3 py-3">
+                                        <input type="text" name="" class="form-control" ng-model="solicitudPresu.correContac">
+                                    </nav>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                {{solicitudPresu}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="solicitarPresupuesto()">Enviar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>

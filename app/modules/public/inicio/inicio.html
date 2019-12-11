@@ -1,0 +1,191 @@
+﻿<style>
+    progress {
+        height: 12px;
+    }
+    .banner {
+        background: rgba(231, 56, 39, 1);
+        background: -moz-linear-gradient(left, rgba(231, 56, 39, 1) 0%, rgba(123, 32, 83, 1) 0%, rgba(123, 32, 83, 1) 0%, rgba(175, 55, 82, 1) 50%, rgba(220, 53, 69, 1) 100%);
+        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(231, 56, 39, 1)), color-stop(0%, rgba(123, 32, 83, 1)), color-stop(0%, rgba(123, 32, 83, 1)), color-stop(50%, rgba(175, 55, 82, 1)), color-stop(100%, rgba(220, 53, 69, 1)));
+        background: -webkit-linear-gradient(left, rgba(231, 56, 39, 1) 0%, rgba(123, 32, 83, 1) 0%, rgba(123, 32, 83, 1) 0%, rgba(175, 55, 82, 1) 50%, rgba(220, 53, 69, 1) 100%);
+        background: -o-linear-gradient(left, rgba(231, 56, 39, 1) 0%, rgba(123, 32, 83, 1) 0%, rgba(123, 32, 83, 1) 0%, rgba(175, 55, 82, 1) 50%, rgba(220, 53, 69, 1) 100%);
+        background: -ms-linear-gradient(left, rgba(231, 56, 39, 1) 0%, rgba(123, 32, 83, 1) 0%, rgba(123, 32, 83, 1) 0%, rgba(175, 55, 82, 1) 50%, rgba(220, 53, 69, 1) 100%);
+        background: linear-gradient(to right, rgba(231, 56, 39, 1) 0%, rgba(123, 32, 83, 1) 0%, rgba(123, 32, 83, 1) 0%, rgba(175, 55, 82, 1) 50%, rgba(220, 53, 69, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e73827', endColorstr='#dc3545', GradientType=1);
+        height: 450px;
+    }
+
+    .caja3 {
+        background-color: rgb(244, 246, 249);
+    }
+    .login-landing-page {
+        margin-top: 80px;
+    }
+    .banner {
+        height: auto!important;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+    .input-alert {
+        color: #dc3545;
+        font-weight: bold;
+        font-size: 12px;
+        margin-left: 12px;
+    }
+    #wrapper {
+        width: 610px;
+        overflow: hidden;
+    }
+    .step {
+        float: left;
+        width: 610px;     
+    }
+    #navigation ul, #navigation02 ul {
+        list-style: none;
+    }
+        #navigation ul li, #navigation02 ul li {
+            position: relative;
+        }
+            #navigation ul li a, #navigation02 ul li a{
+                display: block;
+                height: 45px;
+                color: #fff;
+                border-radius: 5px;
+                font-weight: bold;
+                text-decoration: none;
+                line-height: 45px;
+                padding: 0px 20px;
+                background: #dc3545;
+            }
+    @media only screen and (max-width: 1200px) {
+        #wrapper {
+            width: 505px;
+        }
+        .step {
+            width: 505px;
+            /*background-color: orange;*/
+        }
+    }
+    @media only screen and (max-width: 992px) {
+        #wrapper {
+            width: 480px;
+        }
+        .step {
+            width: 480px;
+            /*background-color: mediumpurple;*/
+        }
+        .login-landing-page {
+            margin-top: 0px;
+        }
+        .text-landing-page {
+            font-size: 35px !important;
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        #wrapper {
+            width: 480px;
+        }
+
+        .step {
+            width: 480px;
+            /*background-color: brown;*/
+        }
+        .text-landing-page {
+            font-size: 30px !important;
+        }
+    }
+
+    @media only screen and (max-width: 576px) {
+        #wrapper {
+            width: 300px;
+        }
+        .step {
+            width: 300px;
+            /*background-color: orange;*/
+        }
+    }
+</style>
+<div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-0 mx-2">
+        <a class="navbar-brand" href="#">Catelyn</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="inicio.landingPage">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-show="showLogin" ui-sref="login">Iniciar Sesion</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-show="showRegister" ui-sref="register">Registrarse</a>
+                </li>
+
+                <!-- Administrar -->
+                <li class="nav-item">
+                    <a class="nav-link" ng-show="showIntranet" ui-sref="home">Administrar</a>
+                </li>
+
+                <!-- Notificaciones -->
+                <!--<li class="nav-item dropdown" ng-show="showIntranet">
+                    <a class="nav-link" data-toggle="dropdown" href="">
+                        Notificaciones
+                        <span class="badge badge-danger navbar-badge" style="top: 5px; right: 0;">2</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 4 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> 8 friend requests
+                            <span class="float-right text-muted text-sm">12 hours</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="" class="dropdown-item">
+                            <i class="fas fa-file mr-2"></i> 3 new reports
+                            <span class="float-right text-muted text-sm">2 days</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    </div>
+                </li>-->
+
+                <!-- Favoritos -->
+                <!--<li class="nav-item dropdown" ng-show="showIntranet">
+                    <a class="nav-link" data-toggle="dropdown" ui-sref="">
+                        Favoritos
+                        <span class="badge badge-danger navbar-badge" style="top: 5px; right: 0;">2</span>
+                    </a>
+                </li>-->
+
+                <!-- Perfil -->
+                <li class="nav-item dropdown user-menu" ng-show="showIntranet">
+                    <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                        <img src="{{usuario.IMA_USU}}" style="margin-top: -1px" class="user-image img-circle mr-1" alt="User Image">
+                        <span class="d-none d-md-inline">{{usuario.PRI_NOM_USU}} {{usuario.APE_PAT_USU}}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" role="menu">
+                        <a ui-sref="" class="dropdown-item">Acerca de</a>
+                        <a href="" ng-click="logaut()" class="dropdown-item">Salir</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div ui-view style="width:100%!important"></div>
+                </div>
+            </div>
+        </section>
+    </div>  
+</div>

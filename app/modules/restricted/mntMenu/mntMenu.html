@@ -1,0 +1,146 @@
+﻿<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-th pr-2"></i>{{titulo}}</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-9 col-lg-9 col-xl-10">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input" for="">Estado:</label>
+                                    <select ng-model="consultar.cboEstado" class="form-control input-sm fullSize">
+                                        <option value="">:: Seleccione ::</option>
+                                        <option ng-repeat="item in estado" value="{{item.id}}">{{item.nombre}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-2">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                                <button type="button" class="btn btn-block btn-default btn-sm" ng-click="ConsultarMenu()">Consultar</button>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                                <button type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal" ng-click="registrar()">Registrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <table datatable="ng" dt-options="dtOptions" class="table table-hover table-bordered nowrap" style="width:100%!important">
+            <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Nombre</th>
+                    <th>Ruta</th>
+                    <th>Grupo</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in listarMenus">
+                    <td>{{item.ID_MEN}}</td>
+                    <td>{{item.NOM_MEN}}</td>
+                    <td>{{item.RUT_MEN}}</td>
+                    <td>{{item.NOM_GRU}}</td>
+                    <td>{{item.DES_EST_MEN}}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-warning btn-xs icon-fa" data-toggle="modal" data-target="#modal-menu" title="Editar" ng-click="actualizar(item)">
+                            <span class="fas fa-edit icon-fa-s"></span>
+                        </button>
+                        <button class="btn btn-xs btn-danger icon-fa" data-toggle="modal" data-target="#modal-eliminar" title="Eliminar" ng-click="eliminar(item)">
+                            <span class="fas fa-times icon-fa-s"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade z-index-modal" id="modal-menu">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Menu</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+                                <div class="form-group">
+                                    <label>Nombre:</label>
+                                    <input type="text" name="" class="form-control" ng-model="mntMenu.txtNombre">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+                                <div class="form-group">
+                                    <label>Ruta:</label>
+                                    <input type="text" name="" class="form-control" ng-model="mntMenu.txtRuta">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input" for="">Grupo:</label>
+                                    <select class="form-control input-sm fullSize" ng-model="mntMenu.cboGrupo">
+                                        <option value="">:: Seleccione ::</option>
+                                        <option ng-repeat="item in listarGrupo" value="{{item.ID_GRU}}">{{item.NOM_GRU}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input" for="">Estado:</label>
+                                    <select ng-model="mntMenu.cboEstado" class="form-control input-sm fullSize">
+                                        <option value="">:: Seleccione ::</option>
+                                        <option ng-repeat="item in estado" value="{{item.id}}">{{item.nombre}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="confirmar()">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade z-index-modal" id="modal-eliminar">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Large Modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿está seguro que desea eliminar el registro seleccionado?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="confirmar()">Aceptar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

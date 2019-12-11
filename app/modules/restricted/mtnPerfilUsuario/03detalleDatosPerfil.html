@@ -1,0 +1,149 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-12 titulo my-4" style="text-align: center;">
+            <h1 class="text-landing-page">Presentate a tus potenciales clientes</h1>
+            <h5>
+                Brindanos tus datos para poder configurar tu perfil
+            </h5>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-4">
+            <div class="card card-danger card-outline" style="box-shadow:none!important;">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-edit"></i>Datos adicionales</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="form-group">
+                                        <label class="cls-titulo-input" for="">Descripcion:</label>
+                                        <textarea ng-model="mntDetalle.descripcion" style="border:1px solid #DEDEDE" maxlength="500" rows="5" placeholder="Escribe brevemente lo que te caracteriza como profesional..." autofocus solo-caracteres-digitos></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-6 col-xl-3">
+                                    <div class="form-group">
+                                        <label class="cls-titulo-input" for="">Fecha de Nacimiento:</label>
+                                        <input ng-model="mntDetalle.fechaNacimiento" type="date" name="" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-7 col-xl-3">
+                                    <div class="form-group">
+                                        <label>Telefono fijo:</label>
+                                        <input ng-model="mntDetalle.telefono" type="text" name="" class="form-control" solo-digitos maxlength="7">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-7 col-xl-3">
+                                    <div class="form-group">
+                                        <label>Celular:</label>
+                                        <input ng-model="mntDetalle.celular" type="text" name="" class="form-control" solo-digitos maxlength="9">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-7 col-xl-3">
+                                    <div class="form-group">
+                                        <label>Documento de Identidad:</label>
+                                        <input ng-model="mntDetalle.dni" type="text" name="" class="form-control" solo-digitos maxlength="8">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+                                    <div class="form-group">
+                                        <label class="cls-titulo-input" for="">Sexo:</label>
+                                        <select ng-model="mntDetalle.sexo" class="form-control input-sm fullSize">
+                                            <option value="">:: Seleccione ::</option>
+                                            <option ng-repeat="item in listarSexo" value="{{item.ID_SEX}}">{{item.NOM_SEX}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-7 col-xl-3">
+                                    <div class="form-group">
+                                        <label>Seudonimo:</label>
+                                        <input ng-model="mntDetalle.seu" type="text" name="" class="form-control" solo-caracteres>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-7 col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <label>Direccion Actual:</label>
+                                        <input ng-model="mntDetalle.direccion" type="text" name="" class="form-control" solo-caracteres-digitos>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-7 col-lg-6 col-xl-6">
+                                    <div class="form-group">
+                                        <label>Punto de Referencia:</label>
+                                        <input ng-model="mntDetalle.referencia" type="text" name="" class="form-control" solo-caracteres-digitos>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+                                    <div class="form-group">
+                                        <label class="cls-titulo-input" for="">Nacionalidad:</label>
+                                        <select ng-model="mntDetalle.pais" class="form-control input-sm fullSize"
+                                                ng-change="listarDepartamento()">
+                                            <option value="">:: Seleccione ::</option>
+                                            <option ng-repeat="item in listaPais" value="{{item.ID_UBIGEO}}">{{item.NOMBRE_UBIGEO}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+                                    <div class="form-group">
+                                        <label class="cls-titulo-input" for="">Departamento:</label>
+                                        <select ng-model="mntDetalle.departamento" class="form-control input-sm fullSize"
+                                                ng-change="listarProvinvia()"
+                                                ng-disabled="mntDetalle.pais == '' ? true : false">
+                                            <option value="">:: Seleccione ::</option>
+                                            <option ng-repeat="item in listaDepartamento" value="{{item.ID_UBIGEO}}">{{item.NOMBRE_UBIGEO}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+                                    <div class="form-group">
+                                        <label class="cls-titulo-input" for="">Provincia:</label>
+                                        <select ng-model="mntDetalle.provincia" class="form-control input-sm fullSize"
+                                                ng-change="listarDistrito()"
+                                                ng-disabled="mntDetalle.departamento == '' ? true : false">
+                                            <option value="">:: Seleccione ::</option>
+                                            <option ng-repeat="item in listaProvincia" value="{{item.ID_UBIGEO}}">{{item.NOMBRE_UBIGEO}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-3">
+                                    <div class="form-group">
+                                        <label class="cls-titulo-input" for="">Distrito:</label>
+                                        <select ng-model="mntDetalle.distrito" class="form-control input-sm fullSize"
+                                                ng-disabled="mntDetalle.provincia == '' ? true : false">
+                                            <option value="">:: Seleccione ::</option>
+                                            <option ng-repeat="item in listaDistrito" value="{{item.ID_UBIGEO}}">{{item.NOMBRE_UBIGEO}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4" style="margin: 0 auto;" ng-show="groupButton01">
+            <div class="row ">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin: 0 auto; padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="registrarDetalle()">Actualizar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4" style="margin: 0 auto;" ng-show="groupButton02">
+            <div class="row ">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="anterior03()">Anterior</button>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="registrarDetalle()">Siguiente <span ng-show="spinner" style="width:20px; height:20px; margin-left:20px;" class="spinner-border" role="status"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,174 @@
+﻿<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-th pr-2"></i>{{titulo}}</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-9 col-lg-9 col-xl-10">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-2">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input">Estado:</label>
+                                    <select ng-model="mntRol.cboEstado" class="form-control input-sm fullSize">
+                                        <option value="">:: Seleccione ::</option>
+                                        <option ng-repeat="item in estado" value="{{item.id}}">{{item.nombre}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3 col-xl-2">
+                        <div class="row text-right">
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                                <button type="button" class="btn btn-block btn-default btn-sm" ng-click="ConsultarRol()">Consultar</button>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                                <button type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal" data-target="#modal-rol" ng-click="registrar()">Registrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <table datatable="ng" dt-options="dtOptions" class="table table-hover table-bordered nowrap" style="width:100%!important">
+            <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Estado</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in rol">
+                    <td class="text-center">{{item.ID_ROL}}</td>
+                    <td>{{item.NOM_ROL}}</td>
+                    <td>{{item.DES_ROL}}</td>
+                    <td>{{item.DES_EST_ROL}}</td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-warning btn-xs icon-fa" data-toggle="modal" data-target="#modal-rol" title="Editar" ng-click="actualizar(item)">
+                            <span class="fas fa-edit icon-fa-s"></span>
+                        </button>
+                        <button class="btn btn-xs btn-danger icon-fa" data-toggle="modal" data-target="#modal-eliminar" title="Eliminar" ng-click="eliminar(item)">
+                            <span class="fas fa-times icon-fa-s"></span>
+                        </button>
+                    </td>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-success btn-xs icon-fa" data-toggle="#modal-asignar" title="Asignar perfiles" ng-click="mostrarAsoc(item)">
+                            <span class="fas fa-plus icon-fa-s"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade z-index-modal" id="modal-rol">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Rol</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label>Nombre:</label>
+                                    <input type="text" name="" class="form-control" ng-model="mntRol.txtNombre">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label>Descripcion:</label>
+                                    <input type="text" name="" class="form-control" ng-model="mntRol.txtDescripcion">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label class="cls-titulo-input" for="">Estado:</label>
+                                    <select ng-model="mntRol.cboEstado" class="form-control input-sm fullSize">
+                                        <option value="">:: Seleccione ::</option>
+                                        <option ng-repeat="item in estado" value="{{item.id}}">{{item.nombre}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="confirmar()">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade z-index-modal" id="modal-eliminar">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Large Modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea eliminar el registro seleccionado?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="confirmar()">Aceptar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade z-index-modal" id="modal-asignar">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Asignar Perfiles</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <label class="mb-3">Rol: <label style="font-weight:normal">{{mntRol.NOM_ROL}}</label></label>
+                        <nav class="navbar bg-light" style="max-height:300px; overflow-y:scroll">
+                            <ul class="navbar-nav ml-5 my-3">
+                                <li ng-repeat="x in listaPerfil">
+                                    <input name="menu" class="mr-1" type="checkbox" id="check{{x.ID_PER}}" value="{{x.ID_PER}}" ng-checked="check{{x.ID_PER}}">
+                                    <label for="check{{x.ID_PER}}" style="font-weight:normal; line-height:15px;">
+                                        {{x.NOM_PER}}
+                                    </label>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="RegistrarAsociacion()">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+﻿<style type="text/css">
+    .card {
+        border: none;
+        box-shadow: 0px 3px 10px 0px rgba(42, 79, 133, 0.25);
+    }
+    .btn {
+        font-size: 14px;
+    }
+    .input-alert {
+        color: #dc3545;
+        font-weight: bold;
+        font-size: 12px;
+        margin-left: 12px;
+    }
+</style>
+{{idPerfil}}
+<div class="hold-transition">
+    <div class="register-box">
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg py-0" style="font-size:18px; font-weight:bold;">Registrate como</p>
+                <div class="row my-3">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <button type="button" class="btn btn-block btn-default btn-lg" ng-click="clickSolicitante()" id="idSolicitante" style="background-color:#4CAF50; color:#FFFFFF;|">Solicitante</button>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <button type="button" class="btn btn-block btn-default btn-lg" ng-click="clickEspecialista()" id="idEspecialista">Especialista</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form name="form" ng-submit="register()" novalidate>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="nombreRegister" placeholder="Nombre" ng-model="principal.nombreRegister" required solo-caracteres>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-alert" ng-show="nombreRegister">
+                            <div>Ingrese un nombre valido</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="apellidoRegister" placeholder="Apellido" ng-model="principal.apellidoRegister" required solo-caracteres>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-alert" ng-show="apellidoRegister">
+                            <div>Ingrese un apellido</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="correoRegister" placeholder="Correo Electronico" ng-model="principal.correoRegister" required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-alert" ng-show="correoRegister">
+                            <div>Ingrese un correo valido</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="nombreUsuarioRegister" placeholder="Nombre de usuario" ng-model="principal.nombreUsuarioRegister" required solo-caracteres-digitos>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-alert" ng-show="nombreUsuarioRegister">
+                            <div>Ingrese un nombre de usuario valido</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="password" class="form-control" name="contrasenaRegister" placeholder="Contraseña" ng-model="principal  .contrasenaRegister" required solo-caracteres-digitos>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-alert" ng-show="contrasenaRegister">
+                            <div>Ingrese una contraseña valida</div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary col-12" ng-click="confirmar()">Registrarse<img ng-if="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /></button>
+                    </div>
+                </form>
+                <div class="social-auth-links text-center mb-3">
+                    <p>- o -</p>
+                    <a href="#" id="login" class="btn btn-block btn-primary">
+                        <i class="fab fa-facebook-f mr-2"></i>Registrarse usando Facebook
+                    </a>
+                    <a href="#" class="btn btn-block btn-danger" id="loginG">
+                        <i class="fab fa-google mr-2"></i>Registrarse usando Google
+                    </a>
+                </div>
+                <p class="mb-0 text-center">
+                    <a ui-sref="login">Ya tengo una cuenta</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

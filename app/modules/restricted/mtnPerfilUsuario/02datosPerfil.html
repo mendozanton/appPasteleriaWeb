@@ -1,0 +1,96 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-12 titulo my-4" style="text-align: center;">
+            <h1 class="text-landing-page">Presentate a tus potenciales clientes</h1>
+            <h5>
+                Brindanos tus datos para poder configurar tu perfil
+            </h5>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-4">
+            <div class="row">
+                <div class="card card-danger card-outline" style="box-shadow:none!important;">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-edit"></i>Datos personales</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                        <div class="form-group">
+                                            <label>Primer Nombre:</label>
+                                            <input type="text" name="" ng-model="mntUsuario.primerNombreUsuario" class="form-control" solo-caracteres>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                        <div class="form-group">
+                                            <label>Apellido Paterno:</label>
+                                            <input type="text" name="" ng-model="mntUsuario.apellidoPaternoUsuario" class="form-control" solo-caracteres>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                        <div class="form-group">
+                                            <label>Apellido Materno:</label>
+                                            <input type="text" name="" ng-model="mntUsuario.apellidoMaternoUsuario" class="form-control" solo-caracteres>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 col-lg-6 col-xl-4">
+                                        <div class="form-group">
+                                            <label>Correo Electronico:</label>
+                                            <input type="text" name="" ng-model="mntUsuario.emailUsuario" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-6 col-xl-4">
+                                        <div class="form-group">
+                                            <label>Nombre de Usuario:</label>
+                                            <input disabled type="text" name="" ng-model="mntUsuario.loginUsuario" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-8 col-lg-12 col-xl-12">
+                                                <div class="form-group mb-0">
+                                                    <label class="cls-titulo-input" for="">Foto:</label>
+                                                    <div class="input-group">
+                                                        <div class="custom-file">
+                                                            <input ng-click="obtenerImagen()" style="height: 34px;" type="file" class="custom-file-input" name="fileUpload" id="fileUpload" accept="image/x-png,image/jpg,image/jpeg">
+                                                            <label class="custom-file-label" for="exampleInputFile"><font style="vertical-align: middle;"><font style="vertical-align: inherit;">Seleccione foto</font></font></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <progress value="0" max="100" id="uploader" style="width:100%!important;">0%</progress>
+                                                <img src="{{mntUsuario.imagenUsuario}}" data-edit="0" id="image" class="img-thumbnail" style="margin-bottom: 10px!important;width:110px!important; min-width:110px;max-width:110px; height:110px!important;" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4" style="margin: 0 auto;" ng-show="groupButton01">
+            <div class="row ">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin: 0 auto; padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="preConfirmar02()">Actualizar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4" style="margin: 0 auto;" ng-show="groupButton02">
+            <div class="row ">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="anterior02()">Anterior</button>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="preConfirmar02()">Siguiente <span ng-show="spinner" style="width:20px; height:20px; margin-left:20px;" class="spinner-border" role="status"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

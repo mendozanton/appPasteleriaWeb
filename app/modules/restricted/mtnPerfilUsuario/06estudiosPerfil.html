@@ -1,0 +1,125 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-12 titulo my-4" style="text-align: center;">
+            <h1 class="text-landing-page">Ya casi terminamos</h1>
+            <h5>
+                Cuentanos si tienes algun estudio o capacitacion esto ayuda a conseguir mas clientes
+            </h5>
+        </div>
+        <div class="col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2 my-1">
+            <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="registrar()">Nuevo</button>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-4">
+            <table datatable="ng" dt-options="dtOptions" class="table table-hover table-bordered nowrap" style="width:100%!important">
+                <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Grado de Estudio</th>
+                        <th>Carrera</th>
+                        <th>Centro de Estudios</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in estudio">
+                        <td class="text-center">{{$index+1}}</td>
+                        <td>{{item.DES_GRA_EST}}</td>
+                        <td>{{item.DES_CAR_EST}}</td>
+                        <td>{{item.DES_EST}}</td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-warning btn-xs icon-fa" ng-click="actualizar(item)" title="Editar">
+                                <span class="fas fa-edit icon-fa-s"></span>
+                            </button>
+                            <button class="btn btn-xs btn-danger icon-fa" data-toggle="modal" ng-click="eliminar(item)" title="Eliminar">
+                                <span class="fas fa-times icon-fa-s"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4" style="margin: 0 auto;" ng-show="groupButton01">
+            <div class="row ">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin: 0 auto; padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <!--<button type="button" class="btn btn-block btn-danger btn-sm" ng-click="confirmar06()">Actualizar</button>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4" style="margin: 0 auto;" ng-show="groupButton02">
+            <div class="row ">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="anterior06()">Anterior</button>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="finalizar()">Finalizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Estudio -->
+<div class="modal fade z-index-modal" id="modal-estudio">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Estudio</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label>Grado de Estudio:</label>
+                                    <input type="text" class="form-control" ng-model="mntEstudio.txtGradoEstudio" solo-caracteres>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label>Carrera:</label>
+                                    <input type="text" class="form-control" ng-model="mntEstudio.txtCargoEstudio" solo-caracteres>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div class="form-group">
+                                    <label>Centro de Estudios:</label>
+                                    <input type="text" class="form-control" ng-model="mntEstudio.txtEstudio" solo-caracteres>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="confirmar()">Guardar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Eliminar -->
+<div class="modal fade z-index-modal" id="modal-eliminar">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Large Modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea eliminar el registro seleccionado?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"  ng-click="confirmar()">Aceptar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

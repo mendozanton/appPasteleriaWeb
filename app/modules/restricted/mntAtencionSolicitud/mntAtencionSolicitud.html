@@ -1,0 +1,255 @@
+﻿<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card card-danger shadow-sm">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-th pr-2"></i>Solicitudes en Espera</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" ng-repeat="soli in listaSolicitudes">
+                        <div class="card card-danger card-outline">
+                            <div class="card-header">
+                                <h3 class="card-title">Estado: {{soli.DES_EST_SOLI}}</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body" style="min-height:278px!important">
+                                <strong><i class="fas fa-user mr-1"></i>Nombre Completo</strong>
+                                <p class="text-muted">
+                                    {{soli.PRI_NOM_USU}} {{soli.APE_PAT_USU}} {{soli.APE_MAT_USU}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-briefcase mr-1"></i> Servicio solicitado</strong>
+                                <p class="text-muted">
+                                    {{soli.DES_TIP_SERV}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-calendar-minus mr-1"></i> Fecha</strong>
+                                <p class="text-muted">
+                                    {{soli.FEC_SOLI}}
+                                </p>
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="row text-right">
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                                            <button type="button" class="btn btn-block btn-default btn-sm" ng-click="preAtender(soli)">Iniciar Atencion</button>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                                            <button type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal"  ng-click="preEvaluar(soli)">Ver</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-danger shadow-sm">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-th pr-2"></i>Solicitudes en Atención</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" ng-repeat="soliA in listaSolicitudesEnAtencion">
+                        <div class="card card-danger card-outline">
+                            <div class="card-header">
+                                <h3 class="card-title">Estado: {{soliA.DES_EST_SOLI}}</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body" style="min-height:278px!important">
+                                <strong><i class="fas fa-user mr-1"></i>Nombre Completo</strong>
+                                <p class="text-muted">
+                                    {{soliA.PRI_NOM_USU}} {{soliA.APE_PAT_USU}} {{soliA.APE_MAT_USU}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-briefcase mr-1"></i> Servicio solicitado</strong>
+                                <p class="text-muted">
+                                    {{soliA.DES_TIP_SERV}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-calendar-minus mr-1"></i> Fecha</strong>
+                                <p class="text-muted">
+                                    {{soliA.FEC_SOLI}}
+                                </p>
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="row text-right">
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                                            <button type="button" class="btn btn-block btn-default btn-sm"  ng-click="preFinalizar(soliA)">Finalizar</button>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                                            <button type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal" ng-click="preEvaluar2(soliA)">Ver</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card card-danger shadow-sm">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-th pr-2"></i>Solicitudes Finalizadas</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" ng-repeat="soliF in listaSolicitudesFinalizadas">
+                        <div class="card card-danger card-outline">
+                            <div class="card-header">
+                                <h3 class="card-title">Estado: {{soliF.DES_EST_SOLI}}</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body" style="min-height:278px!important">
+                                <strong><i class="fas fa-user mr-1"></i>Nombre Completo</strong>
+                                <p class="text-muted">
+                                    {{soliF.PRI_NOM_USU}} {{soliF.APE_PAT_USU}} {{soliF.APE_MAT_USU}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-briefcase mr-1"></i> Servicio solicitado</strong>
+                                <p class="text-muted">
+                                    {{soliF.DES_TIP_SERV}}
+                                </p>
+                                <hr>
+                                <strong><i class="fas fa-calendar-minus mr-1"></i> Fecha</strong>
+                                <p class="text-muted">
+                                    {{soliF.FEC_SOLI}}
+                                </p>
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="row text-right">
+                                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                                            <button type="button" class="btn btn-block btn-success btn-sm" data-toggle="modal" ng-click="preEvaluar2(soliF)">Ver</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade z-index-modal" id="modal-atencion">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Menu</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label>Nombre Completo:</label>
+                                    <input type="text" name="" class="form-control" ng-model="previewSolicitud.nombreCompleto" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label>Tipo Servicio:</label>
+                                    <input type="text" name="" class="form-control" ng-model="previewSolicitud.tipoServicio" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label>Numero Contacto:</label>
+                                    <input type="text" name="" class="form-control" ng-model="previewSolicitud.numeroContacto" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label>Correo Contacto:</label>
+                                    <input type="text" name="" class="form-control" ng-model="previewSolicitud.correoContacto" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label>¿En qué estado se encuentran el lugar?</label>
+                                    <input type="text" name="" class="form-control" ng-model="previewSolicitud.preguntaUno" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label>¿Tienes ya alguna cotización?</label>
+                                    <input type="text" name="" class="form-control" ng-model="previewSolicitud.preguntaDos" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <label>¿Cuándo quieres realizar el trabajo?</label>
+                                    <input type="text" name="" class="form-control" ng-model="previewSolicitud.preguntaTres" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="form-group">
+                                    <img width="127" height="127" src="{{previewSolicitud.imagenUsuario}}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade z-index-modal" id="modal-iniciarAtencion">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Atender Solicitud</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Esta seguro que desea iniciar la atencion para la solicitud seleccionada?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="confirmar()">Aceptar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade z-index-modal" id="modal-finalizar">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Atender Solicitud</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Esta seguro que desea finalizar la atencion de la solictud?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="confirmar2()">Aceptar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

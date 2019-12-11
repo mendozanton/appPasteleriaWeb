@@ -1,0 +1,35 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-12 titulo my-4" style="text-align: center">
+            <h1 class="text-landing-page">Primero lo primero</h1>
+            <h5>
+                A que se dedica tu negocio. Recuerda que puedes cambiarlo en cualquier momento
+            </h5>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-5 bg-light" ng-repeat="x in servicio">
+            <h4 class="text-left">{{x.DES_SERV}}</h4>
+            <div class="row">
+                <div class="icheck-danger d-inline col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4" ng-repeat="x2 in tipoServicio" ng-if="x.ID_SERV == x2.ID_SERV">
+                    <input name="servicios" type="checkbox" id="check{{x2.ID_TIP_SERV}}" value="{{x2.ID_TIP_SERV}}" ng-checked="check{{x2.ID_TIP_SERV}}">
+                    <label for="check{{x2.ID_TIP_SERV}}" style="font-weight:normal!important">
+                        {{x2.DES_TIP_SERV}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4" style="margin: 0 auto;" ng-show="groupButton01">
+            <div class="row ">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin: 0 auto; padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="confirmar01()">Actualizar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4" style="margin: 0 auto;" ng-show="groupButton02">
+            <div class="row ">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="confirmar01()">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

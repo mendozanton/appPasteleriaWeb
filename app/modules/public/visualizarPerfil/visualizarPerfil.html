@@ -1,0 +1,344 @@
+﻿<style>
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        background-color: #c82333;
+    }
+    .nav-pills .nav-link:not(.active):hover {
+        color: #c82333;
+    }
+    .guia-hover:hover {
+        color: #ffffff;
+        cursor: pointer;
+    }
+    blockquote {
+        background: #ffffff;
+        border-left: 0.4em solid #dee2e6;
+        margin: 1.5em .7rem;
+        padding: 0.5em .7rem;
+    }
+        blockquote.quote-secondary {
+            border-color: #dee2e6;
+        }
+</style>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Profile Image -->
+            <div class="card card-primary shadow-sm">
+                <div class="card-body box-profile">
+                    <div class="text-center">
+                        <img width="100" height="100" style="min-height:100px!important; max-height:100px!important; min-width:100px!important; max-width:100px!important;" class="profile-user-img img-fluid img-circle"
+                             src="{{verUsuarioPerfil.imagen}}"
+                             alt="User profile picture">
+                    </div>
+                    <h3 class="profile-username text-center">{{verUsuarioPerfil.nombre}} {{verUsuarioPerfil.apellidoPaterno}}</h3>
+                    <p class="text-muted text-center">{{verDetallePerfil.seu}}</p>
+                    <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                            <b>Puntos</b> <a class="float-right">2530</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Respuestas</b> <a class="float-right">17</a>
+                        </li>
+                        <li class="list-group-item">
+                            <b>Puntuacion</b> <a class="float-right">4.7</a>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-danger btn-block" ng-click="preSolicitarPresupuesto()"><b>Solicitar Presupuesto</b></a>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <!-- About Me Box -->
+            <div class="card card-danger card-outline shadow-sm" >
+                <div class="card-header">
+                    <h3 class="card-title">Sobre mi</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <strong><i class="fas fa-home mr-1"></i> Direccion</strong>
+                    <p class="text-muted">
+                        {{verDetallePerfil.direccion}} <br />
+                        {{verDetallePerfil.referencia}}
+                    </p>
+                    <hr>
+                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Ubicación</strong>
+                    <p class="text-muted">
+                        {{verDetallePerfil.distrito}},
+                        {{verDetallePerfil.provincia}} {{verDetallePerfil.departamento}}
+                    </p>
+                    <hr>
+                    <strong><i class="fas fa-phone mr-1"></i> Telefono</strong>
+                    <p class="text-muted">
+                        {{verDetallePerfil.celular}}
+                    </p>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <div class="col-md-9">
+            <div class="card shadow-sm">
+                <div class="card-header px-3 py-2">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item guia-hover"><a class="nav-link active" data-target="#activity" data-toggle="tab" >Informacion</a></li>
+                        <li class="nav-item guia-hover"><a class="nav-link" data-target="#settings" data-toggle="tab">Evaluaciones</a></li>
+                    </ul>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                    <div class="tab-content">
+                        <div class="active tab-pane" id="activity">
+                            <blockquote class="quote-secondary m-0">
+                                {{verDetallePerfil.descripcion}}
+                            </blockquote>
+                            <hr>
+                            <h3 class="pt-3 pb-3 m-0">Servicios</h3>
+                            <div class="d-flex p-0">
+                                <ul class="nav nav-pills p-0">
+                                    <li class="nav-item guia-hover" ng-repeat="s in listaServicio">
+                                        <a class="nav-link" data-target="#tab{{s.ID_SERV}}" data-toggle="tab">{{s.DES_SERV}}</a>
+                                    </li>
+                                </ul>
+                            </div>                          
+                            <div class="tab-content">
+                                <div class="tab-pane" id="tab{{s2.ID_SERV}}" ng-repeat="s2 in listaServicio">
+                                    <blockquote class="quote-secondary" style="margin-left:0px!important;">
+                                        <dl class="dl-horizontal">
+                                            <dd class="my-3" ng-repeat="s3 in listaTipoServicioPerfil" ng-if="s2.ID_SERV == s3.COD_SERV">{{s3.DES_TIP_SERV}}</dd>
+                                        </dl>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <hr>
+                            <h3 class="pt-3 pb-3 m-0">Estudios y Capacitaciones</h3>
+                            <div class="row">
+                                <div class="dl-horizontal">
+                                    <blockquote class="quote-secondary" ng-repeat="e in listaEstudio">
+                                        <p>{{e.DES_EST}}</p>
+                                        <p>{{e.DES_CAR_EST}}</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <hr>
+                            <h3 class="pt-3 pb-3 m-0">Caracteristicas</h3>
+                            <blockquote class="quote-secondary mx-0" style="margin-left:3px!important;" ng-repeat="ad in listaCaracteristica">{{ad.DES_ADI}}</blockquote>
+                        </div>
+                        <div class="tab-pane" id="settings">
+                            <!-- The timeline -->
+                            <div class="timeline timeline-inverse">
+                                <!-- timeline time label -->
+                                <div class="time-label">
+                                    <span class="bg-danger">
+                                        Evaluaciones
+                                    </span>
+                                </div>
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+                                <div>
+                                    <img style="top:50px; position:relative; left:11px; width:40px; height:40px;" class="img-size-50 mr-3 img-circle" src="../../../../src/img/avatar04.png" />
+                                    <div class="timeline-item" style="background-color:transparent; border:0px;">
+                                        <span class="time"><i class="far fa-clock"></i> 12:05</span>
+                                        <h3 class="timeline-header" style="border-bottom:0px;">
+                                            <a href="">Fernando Cordova</a>
+                                            <small class="comentarios col-12">
+                                                <span style="margin-right: 5px;">5.0</span>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                            </small>
+                                        </h3>
+                                        <div class="timeline-body" style="padding:0px 10px!important">
+                                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                                            quora plaxo ideeli hulu weebly balihoo...
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END timeline item -->
+                                <!-- timeline item -->
+                                <div>
+                                    <img style="top:50px; position:relative; left:11px; width:40px; height:40px;" class="img-size-50 mr-3 img-circle" src="../../../../src/img/avatar04.png" />
+                                    <div class="timeline-item" style="background-color:transparent; border:0px;">
+                                        <span class="time"><i class="far fa-clock"></i> 12:05</span>
+                                        <h3 class="timeline-header" style="border-bottom:0px;">
+                                            <a href="">Fernando Cordova</a>
+                                            <small class="comentarios col-12">
+                                                <span style="margin-right: 5px;">5.0</span>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                            </small>
+                                        </h3>
+                                        <div class="timeline-body" style="padding:0px 10px!important">
+                                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                                            quora plaxo ideeli hulu weebly balihoo...
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END timeline item -->
+                                <!-- timeline item -->
+                                <div>
+                                    <img style="top:50px; position:relative; left:11px; width:40px; height:40px;" class="img-size-50 mr-3 img-circle" src="../../../../src/img/avatar04.png" />
+                                    <div class="timeline-item" style="background-color:transparent; border:0px;">
+                                        <span class="time"><i class="far fa-clock"></i> 12:05</span>
+                                        <h3 class="timeline-header" style="border-bottom:0px;">
+                                            <a href="">Fernando Cordova</a>
+                                            <small class="comentarios col-12">
+                                                <span style="margin-right: 5px;">5.0</span>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                                <i class="fas fa-star" style="color: #29b6f6;"></i>
+                                            </small>
+                                        </h3>
+                                        <div class="timeline-body" style="padding:0px 10px!important">
+                                            Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                                            weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                            jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                                            quora plaxo ideeli hulu weebly balihoo...
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END timeline item -->
+                                <!-- timeline time label -->
+                                <!-- /.timeline-label -->
+                                <!-- timeline item -->
+                                <!-- END timeline item -->
+                                <div>
+                                    <img style="top:50px; position:relative; left:11px; width:40px; height:40px;" class="img-size-50 mr-3 img-circle" src="../../../../src/img/avatar04.png" />
+                                    <div class="timeline-item" style="background-color:transparent; border:0px;">
+                                        <h3 class="timeline-header" style="border-bottom:0px;">
+                                            <a href="">Fernando Cordova</a>
+                                        </h3>
+                                        <div class="timeline-body" style="padding:0px 10px!important">
+                                            <textarea style="border:1px solid #DEDEDE" maxlength="500" rows="5" placeholder="Escribe tu comentario"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.tab-content -->
+                </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+        </div>
+    </div>
+</div>
+<div class="modal fade z-index-modal" id="modal-solicitarServicio">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Solicitar presupuesto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div id="" style="min-height:350px;">
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <div class="form-group">
+                                        <h5>¿Qué tipo de trabajo necesitas?</h5>
+                                        <input type="text" class="form-control input-sm ng-valid" name="NombIFSW" list="ListIFSW" ng-model="Fil.Colaborador" ng-change="VerPer()" autocomplete="off" placeholder="Ej: Construccion, Reformas, Mantenimiento">
+                                        <datalist id="ListIFSW">
+                                            <option ng-repeat="item in listaServicio" value="{{item.DES_SERV}}"></option>
+                                        </datalist>
+
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <nav class="navbar bg-light" style="max-height:300px; overflow-y:scroll">
+                                        <ul class="navbar-nav ml-2">
+                                            <li ng-repeat="x in listaTipoServicioPerfil" ng-if="solicitud.codigoServicio == x.COD_SERV" class="my-2">
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input " type="radio" id="check{{x.COD_SERV}}{{x.ID_TIP_SERV}}" name="servicio" ng-model="solicitudPresu.idTipoServicio" value="{{x.ID_TIP_SERV}}">
+                                                    <label for="check{{x.COD_SERV}}{{x.ID_TIP_SERV}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x.DES_TIP_SERV}}</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </fieldset>
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <h5>¿En qué estado se encuentran el lugar?</h5>
+                                    <nav class="navbar bg-light">
+                                        <ul class="navbar-nav ml-2">
+                                            <li ng-repeat="x2 in pregunta" ng-if="x2.ID_GRU_PREG == 1" class="my-2">
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input " type="radio" id="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" name="servicio1" ng-model="solicitudPresu.codigoPregunta01" value="{{x2.ID_PREG}}">
+                                                    <label for="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x2.DES_PREG}}</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </fieldset>
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <h5>¿Tienes ya alguna cotización?</h5>
+                                    <nav class="navbar bg-light">
+                                        <ul class="navbar-nav ml-2">
+                                            <li ng-repeat="x2 in pregunta" ng-if="x2.ID_GRU_PREG == 2" class="my-2">
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input " type="radio" id="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" name="servicio2" ng-model="solicitudPresu.codigoPregunta02" value="{{x2.ID_PREG}}">
+                                                    <label for="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x2.DES_PREG}}</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </fieldset>
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <h5>¿Cuándo quieres realizar el trabajo?</h5>
+                                    <nav class="navbar bg-light">
+                                        <ul class="navbar-nav ml-2">
+                                            <li ng-repeat="x2 in pregunta" ng-if="x2.ID_GRU_PREG == 3" class="my-2">
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input " type="radio" id="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" name="servicio3" ng-model="solicitudPresu.codigoPregunta03" value="{{x2.ID_PREG}}">
+                                                    <label for="check{{x2.ID_PREG}}{{x2.ID_GRU_PREG}}" class="custom-control-label" style="font-weight:normal; line-height:25px;">{{x2.DES_PREG}}</label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </fieldset>
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <h5>Numero de contacto</h5>
+                                    <nav class="navbar bg-light px-3 py-3">
+                                        <input type="text" name="" class="form-control" ng-model="solicitudPresu.numerContac" solo-digitos maxlength="9">
+                                    </nav>
+                                </div>
+                            </fieldset>
+                            <fieldset class="">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-4">
+                                    <h5>Correo de contacto</h5>
+                                    <nav class="navbar bg-light px-3 py-3">
+                                        <input type="text" name="" class="form-control" ng-model="solicitudPresu.correContac">
+                                    </nav>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="solicitarPresupuesto()">Enviar</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+

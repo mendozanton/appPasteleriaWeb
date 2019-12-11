@@ -1,0 +1,33 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-12 titulo my-4" style="text-align: center">
+            <h1 class="text-landing-page">¿Que te caracteriza como profesional?</h1>
+            <h5></h5>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-4">
+            <div class="row">
+                <div class="icheck-danger d-inline col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" ng-repeat="x in listaCaracteristica">
+                    <input name="adicional" type="checkbox" id="checkAdicional{{x.ID_ADI}}" value="{{x.ID_ADI}}" ng-checked="checkAdicional{{x.ID_ADI}}">
+                    <label for="checkAdicional{{x.ID_ADI}}" style="font-weight:normal!important">{{x.DES_ADI}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4" style="margin: 0 auto;" ng-show="groupButton01">
+            <div class="row ">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="margin: 0 auto; padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="confirmar04()">Actualizar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-10 col-md-6 col-lg-4 col-xl-4" style="margin: 0 auto;" ng-show="groupButton02">
+            <div class="row ">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="anterior04()">Anterior</button>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="padding-top: 3.5px; padding-bottom: 3.5px;">
+                    <button type="button" class="btn btn-block btn-danger btn-sm" ng-click="confirmar04()">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
